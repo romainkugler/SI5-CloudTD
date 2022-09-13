@@ -31,8 +31,8 @@ public class PersistenceJpaConfig {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
         dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.pass"));
+        dataSource.setUsername("");
+        dataSource.setPassword("");
         LOG.info("Data-source initialized at url " + dataSource.getUrl());
         return dataSource;
     }
