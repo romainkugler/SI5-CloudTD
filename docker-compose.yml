@@ -8,10 +8,10 @@ services:
     depends_on:
       - database
     environment:
-      - POSTGRES_PASSWORD=dev_password
-      - POSTGRES_USER=si5_sacc
-      - POSTGRES_DB=td_1
-      - POSTGRES_URL=jdbc:postgresql://database-cloud:5432/td_1
+      - DATABASE_PASSWORD=dev_password
+      - DATABASE_USER=si5_sacc
+      - DATABASE_DB=td_1
+      - DATABASE_URL=jdbc:postgresql://database-cloud:5432/td_1
 
     entrypoint: "bash -c './wait-for-it.sh database-cloud:5432 -t 60 -- java -jar app.jar'"
 
@@ -21,6 +21,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-        - POSTGRES_PASSWORD=dev_password
-        - POSTGRES_USER=si5_sacc
-        - POSTGRES_DB=td_1
+        - DATABASE_PASSWORD=dev_password
+        - DATABASE_USER=si5_sacc
+        - DATABASE_DB=td_1
