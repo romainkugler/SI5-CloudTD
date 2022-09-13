@@ -7,13 +7,20 @@ services:
       - "8080:8080"
     depends_on:
       - database
+    environment:
+      - POSTGRES_PASSWORD=dev_password
+      - POSTGRES_USER=si5_sacc
+      - POSTGRES_DB=td_1
+      - POSTGRES_URL=jdbc:postgresql://database-cloud:5432/td_1
 
-    #entrypoint: "bash -c './wait-for-it.sh $${databse:5432} -t 60 -- java -jar td-0.0.1.SNAPSHOT.jar'"
+    entrypoint: "bash -c './wait-for-it.sh database-cloud:5432 -t 60 -- java -jar app.jar'"
 
   database:
     image: postgres:14
+    container_name: database-cloud
+    ports:
+      - "5432:5432"
     environment:
         - POSTGRES_PASSWORD=dev_password
         - POSTGRES_USER=si5_sacc
         - POSTGRES_DB=td_1
-        - POSTGRES_URL=jdbc:postgresql://database:5432/db
